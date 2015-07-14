@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <%= t.include("partials/_adHead.html") %>
+  </head>
+  <body>
+
+    <responsive-child class="outer">
+      <div class="title">Quiz: your sidewalk rage tendency</div>
+      <div class="chatter">Negative pedestrian emotions are habitual and cultural. We all have some tendency toward it sometimes. The higher your score on this quiz, the more likely it is that you will be the victim of sidewalk rage trouble.</div>
+      <div class="index"></div>
+      <div class="question"></div>
+      <div class="answers">
+        <div class="answer yes">yes</div>
+        <div class="answer no">no</div>
+      </div>
+      <div class="dot-box">
+        <i class="dot fa fa-space-shuttle"></i>
+      </div>
+
+      <div class="source">
+        Source: Leon James, University of Hawaii at Manoa
+      </div>
+      <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
+    </responsive-child>
+
+    <script>
+      var quizData = <%= JSON.stringify(csv.rage_questions) %>
+    </script>
+    <script src="app.js"></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_adFoot.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>
