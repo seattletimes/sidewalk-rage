@@ -28,6 +28,7 @@ qsa(".answer").forEach(function(el) {
       $(".index").innerHTML = "Results";
       $(".yes").classList.add("hidden");
       $(".no").classList.add("hidden");
+      $(".dot-box").classList.add("hidden");
     }
   });
 });
