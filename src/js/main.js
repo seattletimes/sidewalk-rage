@@ -7,10 +7,10 @@ var $ = document.querySelector.bind(document);
 var qsa = s => Array.prototype.slice.call(document.querySelectorAll(s));
 
 var score = 0;
-var id = 0;
+var id = 19;
 var leftMargin = 0;
 var quizLength = Object.keys(quizData).length;
-var width = $(".outer").offsetWidth;
+var width = $(".outer").offsetWidth - 26;
 var increment = width / (quizLength - 1);
 
 document.querySelectorAll(".answer")
@@ -28,7 +28,6 @@ qsa(".answer").forEach(function(el) {
       $(".index").innerHTML = "Results";
       $(".yes").classList.add("hidden");
       $(".no").classList.add("hidden");
-      $(".dot-box").classList.add("hidden");
     }
   });
 });

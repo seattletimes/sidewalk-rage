@@ -6,9 +6,10 @@
 }
 
 @import "seattletimes";
+@import "flexbox";
 
 .outer {
-  max-width: 620px;
+  max-width: 630px;
   font-family: @df-sans;
   font-size: 18px;
 }
@@ -18,11 +19,15 @@
   font-size: 28px;
   text-align: center;
   padding-bottom: 5px;
+
+  @media @mobile {
+    font-size: 24px;
+  }
 }
 
 .chatter {
   font-size: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
   font-family: @df-serif;
 }
 
@@ -31,6 +36,11 @@
   padding: 40px;
   max-width: 75%;
   margin: auto;
+
+  @media @mobile {
+    max-width: 100%;
+    padding: 30px;
+  }
 }
 
 .index {
@@ -42,6 +52,10 @@
   font-weight: bold;
   font-size: 20px;
   padding-bottom: 5px;
+
+  @media @mobile {
+    font-size: 18px;
+  }
 }
 
 .answers {
@@ -82,41 +96,40 @@
 
 .icon {
   vertical-align: top;
-  font-size: 22px;
   padding-right: 5px;
-}
 
-.happy {
-  color: #2a9964;
-}
-.meh {
-  color: #e3a51d;
-}
-.sad {  
-  color: #da2128;
+  img {
+    width: 90px;
+  }
 }
 
 .info {
   font-weight: normal;
-  padding-top: 10px;
-  font-size: 16px;
+  font-size: 15px;
+
+  td {
+    padding-top: 8px;
+  }
 }
 
 .dot-box {
-  margin-top: 20px;
-  margin-bottom: 60px;
+  height: 45px;
+  margin-top: 30px;
+  position: relative;
+  border-bottom: 4px solid @df-border-gray;
+  padding-bottom: 5px;
 }
 
 .dot {
-  height: 20px;
-  width: 20px;
+  height: 45px;
   position: absolute;
   transition: left .3s ease-in-out;
-  font-size: 36px;
+  bottom: 0;
+  padding-bottom: 1px;
 }
 
 .source {
-  padding-top: 10px;
+  padding-top: 25px;
   font-style: italic;
 }
 .source, .credit {
