@@ -12,6 +12,8 @@
   max-width: 630px;
   font-family: @df-sans;
   font-size: 18px;
+  border-top: 4px solid @df-border-gray;
+  padding: 20px 0;
 }
 
 .title {
@@ -76,14 +78,8 @@
 
   &:hover {
     color: @df-off-white;
+    background: #DE5636;
   }
-}
-
-.yes:hover {
-  background: #DE5636;
-}
-.no:hover {
-  background: #589040;
 }
 
 .hidden {
@@ -96,11 +92,7 @@
 
 .icon {
   vertical-align: top;
-  padding-right: 5px;
-
-  img {
-    width: 90px;
-  }
+  width: 35px;
 }
 
 .info {
@@ -112,6 +104,10 @@
   }
 }
 
+.text {
+  padding-left: 7px;
+}
+
 .dot-box {
   height: 45px;
   margin-top: 30px;
@@ -121,11 +117,20 @@
 }
 
 .dot {
-  height: 45px;
   position: absolute;
-  transition: left .3s ease-in-out;
+  transition: left .7s ease-in-out;
   bottom: 0;
-  padding-bottom: 1px;
+  left: 0;
+
+  img {
+    height: 45px;
+    vertical-align: bottom;
+    display: none;
+  }
+
+  .ing {
+    display: block;
+  }
 }
 
 .source {

@@ -3,15 +3,19 @@
 // var track = require("./lib/tracking");
 
 require("component-responsive-frame/child");
+var ich = require("icanhaz");
 var $ = document.querySelector.bind(document);
 var qsa = s => Array.prototype.slice.call(document.querySelectorAll(s));
 
+var resultsTemplate = require("./_resultsTemplate.html");
+ich.addTemplate("resultsTemplate", resultsTemplate);
+
 var score = 0;
-var id = 19;
-var leftMargin = 0;
+var id = 0;
 var quizLength = Object.keys(quizData).length;
 var width = $(".outer").offsetWidth - 26;
 var increment = width / (quizLength - 1);
+var leftMargin = increment;
 
 document.querySelectorAll(".answer")
 
@@ -24,7 +28,15 @@ qsa(".answer").forEach(function(el) {
       id += 1;
       showQuestion(id);
     } else {
-      $(".question").innerHTML = require("./resultsText")(score);
+      var obj = {score: score};
+      if (score < 5) {
+        obj.green = true;
+      } else if (score < 11) {
+        obj.yellow = true;
+      } else {
+        obj.red = true;
+      }
+      $(".question").innerHTML = ich.resultsTemplate(obj);
       $(".index").innerHTML = "Results";
       $(".yes").classList.add("hidden");
       $(".no").classList.add("hidden");
@@ -33,10 +45,17 @@ qsa(".answer").forEach(function(el) {
 });
   
 var showQuestion = function(id) {
-  $(".question").innerHTML = quizData[id].question;
-  $(".index").innerHTML = (id + 1) + " of " + quizLength;
+  $(".stand").classList.remove("ing");
+  $(".walk").classList.add("ing");
   $(".dot").style.left = leftMargin + "px";
   leftMargin += increment;
+  $(".question").innerHTML = quizData[id].question;
+  $(".index").innerHTML = (id + 1) + " of " + quizLength;
+  setTimeout(function() {
+    $(".stand").classList.add("ing");
+    $(".walk").classList.remove("ing");
+  }, 700);
 };
 
-showQuestion(id);
+$(".question").innerHTML = quizData[id].question;
+$(".index").innerHTML = (id + 1) + " of " + quizLength;
